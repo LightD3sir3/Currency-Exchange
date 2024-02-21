@@ -1,0 +1,27 @@
+﻿<div class="groupsection-wrapper" @ref="divWrapper" tabindex="0" hidden="@View">
+
+    <div class="groupsection-title">
+        @GroupSectionTitle
+    </div>
+
+</div>
+
+@if (ChildContent != null)
+{
+    <div hidden="@View" style="padding: 10px">
+        @ChildContent
+    </div>
+}
+
+@code {
+    protected ElementReference divWrapper;
+
+    [Parameter]
+    public string GroupSectionTitle { get; set; } = "";
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public bool View { get; set; }
+}

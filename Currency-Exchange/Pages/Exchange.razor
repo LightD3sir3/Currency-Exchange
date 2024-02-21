@@ -1,0 +1,75 @@
+﻿@page "/exchange"
+
+<PageTitle>Currency Exchange</PageTitle>
+
+<GroupSection GroupSectionTitle="Add or Update">
+    <ChildContent>
+
+        <div>
+            <div class="row">
+                <div style="width: 540px;">
+                    <EditForm Model="@currency" OnValidSubmit="@HandleValidSubmit" class="needs-validation" novalidate>
+                        <DataAnnotationsValidator />
+                        <ValidationSummary />
+
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <InputText id="name" @bind-Value="currency.Name" class="form-control" required />
+                            <div class="invalid-feedback">
+                                Please provide a name.
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="code">Code</label>
+                            <InputText id="code" @bind-Value="currency.Code" class="form-control" required />
+                            <div class="invalid-feedback">
+                                Please provide a code.
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end" style="margin-top: 10px">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+
+    </ChildContent>
+</GroupSection>
+
+<GroupSection GroupSectionTitle="Delete or Edit">
+    <ChildContent>
+
+        @if (Currencies == null)
+        {
+            <p><em>Loading...</em></p>
+        }
+        else
+        {
+            <table class="table table-striped table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Code</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var currency in Currencies)
+                    {
+                        <tr>
+                            <td>@currency.Name</td>
+                            <td>@currency.Code</td>
+                            <td>
+                                <button class="btn btn-primary" @onclick="() => EditCurrency(currency)">Edit</button>
+                                <button class="btn btn-danger" @onclick="() => DeleteCurrency(currency)">Delete</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </ChildContent>
+</GroupSection>

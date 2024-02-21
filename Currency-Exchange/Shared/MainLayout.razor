@@ -1,0 +1,41 @@
+﻿@inherits LayoutComponentBase
+@using Blazored.Modal;
+@inject ExceptionHandlerService ExceptionHandler
+@inject IModalService ModalService
+
+<BlazoredModal/>
+
+<div class="page">
+    <div class="top-menu">
+        <NavMenu />
+    </div>
+
+    <main>
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">© 2024 Currency-Exchange. All rights reserved.</div>
+    </footer>
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        ExceptionHandler.OnException += HandleException;
+    }
+
+    private async Task HandleException(Exception ex)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add("Message", ex.Message);
+        ModalService.Show<ExceptionDialog>("Error", parameters);
+    }
+
+    public void Dispose()
+    {
+        ExceptionHandler.OnException -= HandleException;
+    }
+}

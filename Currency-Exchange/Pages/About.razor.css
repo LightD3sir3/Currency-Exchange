@@ -1,0 +1,48 @@
+﻿.about-text {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+header {
+    margin-bottom: 15px;
+}
+
+h1, h2 {
+    color: #666;
+}
+
+h1 {
+    border-bottom: 2px solid #666;
+}
+
+h2 {
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
+
+.contact-info {
+    list-style: none;
+    padding: 0;
+}
+
+    .contact-info li {
+        margin-bottom: 10px;
+    }
+
+    .contact-info a {
+        color: #333;
+        text-decoration: none;
+    }
+
+.about-text {
+    text-align: justify;
+}
+
+a {
+    color: blue;
+}
+
+    a:hover {
+        color: darkblue;
+        text-decoration: underline;
+    }

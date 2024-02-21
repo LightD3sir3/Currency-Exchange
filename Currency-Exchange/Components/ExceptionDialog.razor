@@ -1,0 +1,11 @@
+﻿@page "/exceptionmodal"
+@using Blazored.Modal
+
+<BlazoredModalContent>
+    <p>@Message</p>
+</BlazoredModalContent>
+
+@code {
+    [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
+    [Parameter] public string Message { get; set; }
+}

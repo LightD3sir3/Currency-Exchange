@@ -1,0 +1,34 @@
+﻿@page "/"
+
+<GroupSection GroupSectionTitle="Saved Currencies">
+    <ChildContent>
+
+        @if (Currencies == null)
+        {
+            <p><em>Loading...</em></p>
+        }
+        else
+        {
+            <table class="table table-striped table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Code</th>
+                        <th>Exchange Rate to ZAR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var currency in Currencies)
+                    {
+                        <tr>
+                            <td>@currency.Name</td>
+                            <td>@currency.Code</td>
+                            <td>@currency.ExchangeRate</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+    </ChildContent>
+</GroupSection>
